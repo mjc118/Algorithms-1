@@ -1,5 +1,6 @@
 import random
 from math import exp
+from fractions import gcd
 
 #This function will run all the other functions
 #(just making it more organized)
@@ -25,8 +26,17 @@ def randomPrime():
 				test = test + 1
 			else:
 				break
-			if(test == 5):
+			if(test == 10): #Make sure it checks 10 times consecutive before giving the prime number
 				return Prime
+				
+def euclidean(a, b):
+	a = int(input("Choose your a: "))
+	b = int(input("Choose your b: "))
+	
+	ax + by = gcd(a,b)
+	
+	
+
 
 
 #This will always be true, running the main function
