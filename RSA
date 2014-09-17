@@ -1,11 +1,23 @@
 import random
 from math import exp
 from fractions import gcd
+from functools import reduce
 
 #This function will run all the other functions
 #(just making it more organized)
 def main():
 	print randomPrime()
+	"""This is a"""
+	a = int(input("Choose your a: "))
+	"""This is b"""
+	b = int(input("Choose your b: "))
+	"""Trying to make this Euclidean Function work"""
+	print egcd(a, b)
+	"""Input for p and q."""
+	p = int(input("Choose your p: "))
+	q = int(input("Choose your q: "))
+	print modinv(p,q)
+	
 	
 def fermat(prime):
 	a = random.randint(2,prime-1)
@@ -26,18 +38,34 @@ def randomPrime():
 				test = test + 1
 			else:
 				break
-			if(test == 10): #Make sure it checks 10 times consecutive before giving the prime number
+			if(test == 10): #Make sure it checks 10 consecutive times before giving the prime number
 				return Prime
-				
-def euclidean(a, b):
-	a = int(input("Choose your a: "))
-	b = int(input("Choose your b: "))
-	
-	ax + by = gcd(a,b)
-	
-	
 
 
+
+"""Extended Euclidean Algorithm"""
+def egcd(a, b):
+    x,y, u,v = 0,1, 1,0
+    while a != 0:
+        q, r = b//a, b%a
+        m, n = x-u*q, y-v*q
+        b,a, x,y, u,v = a,r, u,v, m,n
+    gcd = b
+    return gcd, x, y
+
+"""To find E"""	
+def modinv(a, m):
+    gcd, x, y = egcd(a, m)
+    if gcd != 1:
+        return None  # modular inverse does not exist
+    else:
+        return x % m
+		
+"""RSA Encryption"""
+#def encryption(e,n):
+
+
+	
 
 #This will always be true, running the main function
 if True:
