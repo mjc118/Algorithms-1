@@ -2,10 +2,12 @@ import random
 from math import exp
 from fractions import gcd
 from functools import reduce
+import sys
 
 #This function will run all the other functions
 #(just making it more organized)
 def main():
+	#a = list(map(input().split(" ")))
 	print randomPrime()
 	"""This is a"""
 	a = int(input("Choose your a: "))
@@ -14,9 +16,12 @@ def main():
 	"""Trying to make this Euclidean Function work"""
 	print egcd(a, b)
 	"""Input for p and q."""
+	e = int(input("Choose your e: "))
 	p = int(input("Choose your p: "))
 	q = int(input("Choose your q: "))
-	print modinv(p,q)
+	print function(e,p,q)
+	print encryption(e,n)
+	print decryption(d,n)
 	
 	
 def fermat(prime):
@@ -53,16 +58,48 @@ def egcd(a, b):
     gcd = b
     return gcd, x, y
 
-"""To find E"""	
-def modinv(a, m):
+"""To find D"""	
+def modinv(e, n):
     gcd, x, y = egcd(a, m)
     if gcd != 1:
         return None  # modular inverse does not exist
     else:
         return x % m
+
+"""Return d,n"""		
+def function(e,p,q):
+	n = p*q
+	d = modinv(e,n)
+	
+	if((d*e)%((p-1)*(q-1))==1):
+		return d, n
 		
 """RSA Encryption"""
-#def encryption(e,n):
+def encryption(e,n, m):
+	for count in range(len(m) - 1):
+		M = (ord(m[count]) * 128) + ord(m[count + 1])
+		
+	
+	C = pow(M, e, n)
+	return C
+
+"""RSA Decryption"""
+def decryption(d,n,c):
+	M = pow(c,d,n)
+	
+	mystring[]
+	while(True)
+		mystring.append(chr(M%128))
+		M = M/128
+		if(M < 128):
+			mystring.append(chr(M))
+			break
+	mystring = mystring.reverse()
+	
+	return mystring
+	
+
+	
 
 
 	
