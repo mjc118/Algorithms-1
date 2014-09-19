@@ -76,8 +76,9 @@ def function(e,p,q):
 		
 """RSA Encryption"""
 def encryption(e,n, m):
+	M = ord(m[0])
 	for count in range(len(m) - 1):
-		M = (ord(m[count]) * 128) + ord(m[count + 1])
+		M = (M * 128) + ord(m[count + 1])
 		
 	
 	C = pow(M, e, n)
